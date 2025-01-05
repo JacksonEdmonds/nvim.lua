@@ -1,65 +1,85 @@
--- [[ Setting options ]]
--- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+local opt = vim.opt
 
--- Make line numbers default
-vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+-- Display line numbers
+opt.number = true
+-- Show relative line numbers
+opt.relativenumber = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+-- todo possibly set to foldmethod=syntax if I can get syntax folding working properly
+-- Set fold level based on indent
+opt.foldmethod = "indent"
 
+-- Default folds to open when opening a file
+opt.foldlevel = 99
+
+-- todo determine if keeping statusline, if not set to true
 -- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+-- Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+	opt.clipboard = "unnamedplus"
 end)
 
--- Enable break indent
-vim.opt.breakindent = true
+-- Don't wrap lines
+opt.wrap = false
 
--- Save undo history
-vim.opt.undofile = true
+-- Save undo history in a file on disk (allows for restoring undo history when re-opening a file)
+opt.undofile = true
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+-- Case-insensitive searching unless there is a capital letter in the search term
+opt.ignorecase = true
+opt.smartcase = true
 
--- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+-- Always show signcolumn (gutter to the left of line numbers that can contain symbols from plugins like git marks or breakpoints)
+opt.signcolumn = "yes"
 
--- Decrease update time
-vim.opt.updatetime = 250
+-- Decrease update time for faster completion
+opt.updatetime = 250
 
--- Decrease mapped sequence wait time
--- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+-- Displays which-key popup immediately
+opt.timeoutlen = 0
 
 -- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- Use special symbols to identify certain whitespace characters
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- Always show these symbols rather than whitespace
+opt.list = true
 
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
-
--- Show which line your cursor is on
-vim.opt.cursorline = true
+-- Highlight the line that the cursor is currently on
+opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+opt.scrolloff = 5
 
--- vim: ts=2 sts=2 sw=2 et
+-- Set tabs to 2 columns in width
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+
+-- Enable spellchecking
+opt.spell = true
+opt.spelllang = "en"
+
+-- Don't update the display while executing macros
+opt.lazyredraw = true
+
+-- Show proposed changes from substitutions in real time
+opt.inccommand = "split"
+
+-- Shared data settings
+-- - ! : Save and restore user-defined global variables
+-- - % : Save and restore information about buffers, including their file names. This allows reopening files you had open in the last session.
+-- - '200 : Save up to 200 lines of each register
+-- - /500 : Save up to 500 items from the search history
+-- - :500 : Save up to 500 items from the command-line history
+-- - <200 : Save the file marks (locations in files) for up to 200 file
+-- - h : Don't persist the hlsearch state between sessions
+-- - s500 : Save up to 500 items in the search pattern history (eg from :%s
+opt.shada = "!,%,'200,/500,:500,<200,h,s500"
+
