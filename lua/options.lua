@@ -83,3 +83,5 @@ opt.inccommand = "split"
 -- - s500 : Save up to 500 items in the search pattern history (eg from :%s
 opt.shada = "!,%,'200,/500,:500,<200,h,s500"
 
+-- Disable swapfile
+opt.swapfile = false

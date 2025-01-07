@@ -22,26 +22,51 @@ Complete:
 https://www.youtube.com/playlist?list=PL0tgH22U2S3GN7MdobsdWV44qw-P5g7RJ
 https://www.youtube.com/watch?v=zHTeCSVAFNY
 
+- 1.5h nvim LSP
+  - mason.nvim is responsible for installing language servers
+  - nvim-lspconfig configures language servers
+  - nvim-cmp is an autocompletion engine
+- 1.5h nvim General setup - https://www.youtube.com/watch?v=6pAG3BHurdM
+- 10min nvim Debugging - https://www.youtube.com/watch?v=lyNfnI-B640
+- Setup Nvim - C:\Users\Jackson\AppData\Local\nvim
+- https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#csv-files
+- https://github.com/qpkorr/vim-renamer
+- Update package.csv for vim, neovim and VSCode
+
 # Review plugins
 
-cmp: A completion engine for Neovim, providing a powerful and customizable autocomplete framework that supports multiple completion sources (like LSP, buffer words, paths, and more).
-colorschemes: A collection of color schemes that can be applied to Neovim to change the overall appearance and enhance syntax highlighting.
-conform: A lightweight, on-demand code formatting plugin for Neovim, supporting a variety of languages and formatter tools.
-dadbod: A database client for Neovim, allowing users to interact with various database systems directly within the editor.
-debug: Debugging tools integrated with Neovim, often working alongside other tools like DAP (Debug Adapter Protocol) to offer breakpoints, stepping, and variable inspection.
-gitsigns: Git integration for Neovim, adding features like inline git diff signs, hunk management, and other version control utilities.
-indent_line: A plugin that displays vertical lines to visually represent indentation levels, making code structure easier to follow.
-lint: A linting framework for Neovim that runs linters on various programming languages and provides feedback within the editor.
-lspconfig: A configuration framework for setting up Language Server Protocol (LSP) servers in Neovim, enabling rich code intelligence features like diagnostics, autocompletion, and hover info.
-mini: A collection of small, independent Neovim plugins providing various enhancements like statusline, surround text manipulation, and auto-pairs, all in a minimalist package.
-neo-tree: A file explorer for Neovim, offering an interactive and customizable interface for navigating and managing files within a project.
-oil: A file explorer plugin that allows navigating and editing directories as text buffers, providing an alternative way to manage files in Neovim.
-telescope: A fuzzy finder for Neovim that allows fast searching through files, buffers, LSP symbols, git commits, and more with a highly customizable interface.
-todo-comments: A plugin to highlight and manage TODO comments in code, helping users easily track tasks and notes within their projects.
-treesitter: A syntax parser that offers advanced syntax highlighting, code navigation, and other language-specific features for Neovim, improving code comprehension and editing experience.
-which-key: A keybinding helper that shows a popup with available key bindings in Neovim after pressing a leader key, helping users discover keymaps without memorizing them all.
-nvim-tree: sidebar file manager
-mini files: floating file manager
+Done:
+- indent_line
+- colorschemes
+
+## lspconfig
+
+Controls the communication between the LSP and NVIM
+
+How can I show suggestions for errors?
+
+### mason
+
+Installs typescript-language-server
+This is automated with mason-lspconfig
+?Is there a better typescript lsp I could be using?
+
+todo:
+- cmp: A completion engine for Neovim, providing a powerful and customizable autocomplete framework that supports multiple completion sources (like LSP, buffer words, paths, and more).
+- conform: A lightweight, on-demand code formatting plugin for Neovim, supporting a variety of languages and formatter tools.
+- dadbod: A database client for Neovim, allowing users to interact with various database systems directly within the editor.
+- debug: Debugging tools integrated with Neovim, often working alongside other tools like DAP (Debug Adapter Protocol) to offer breakpoints, stepping, and variable inspection.
+- gitsigns: Git integration for Neovim, adding features like inline git diff signs, hunk management, and other version control utilities.
+- lint: A linting framework for Neovim that runs linters on various programming languages and provides feedback within the editor.
+- mini: A collection of small, independent Neovim plugins providing various enhancements like statusline, surround text manipulation, and auto-pairs, all in a minimalist package.
+- neo-tree: A file explorer for Neovim, offering an interactive and customizable interface for navigating and managing files within a project.
+- oil: A file explorer plugin that allows navigating and editing directories as text buffers, providing an alternative way to manage files in Neovim.
+- telescope: A fuzzy finder for Neovim that allows fast searching through files, buffers, LSP symbols, git commits, and more with a highly customizable interface.
+- todo-comments: A plugin to highlight and manage TODO comments in code, helping users easily track tasks and notes within their projects.
+- treesitter: A syntax parser that offers advanced syntax highlighting, code navigation, and other language-specific features for Neovim, improving code comprehension and editing experience.
+- which-key: A keybinding helper that shows a popup with available key bindings in Neovim after pressing a leader key, helping users discover keymaps without memorizing them all.
+- nvim-tree: sidebar file manager
+- mini files: floating file manager
 
 # Fuzzy Finding
 
@@ -152,6 +177,8 @@ hide duplicate search results count - in statusline and bottom bar
 # Buffers
 
 Save open buffers on close and restore on next open
+
+Show open buffers
 
 Dealing with terminal - run within nvim? Have in a separate terminal tab/split?
 
