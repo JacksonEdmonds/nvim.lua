@@ -51,6 +51,12 @@ Installs typescript-language-server
 This is automated with mason-lspconfig
 ?Is there a better typescript lsp I could be using?
 
+##
+
+https://github.com/pmizio/typescript-tools.nvim
+https://github.com/mfussenegger/nvim-dap
+https://nvimdev.github.io/lspsaga/
+
 todo:
 - cmp: A completion engine for Neovim, providing a powerful and customizable autocomplete framework that supports multiple completion sources (like LSP, buffer words, paths, and more).
 - conform: A lightweight, on-demand code formatting plugin for Neovim, supporting a variety of languages and formatter tools.
