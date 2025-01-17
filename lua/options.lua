@@ -19,7 +19,7 @@ opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.schedule(function()
-	opt.clipboard = "unnamedplus"
+  opt.clipboard = "unnamedplus"
 end)
 
 -- Don't wrap lines
@@ -38,15 +38,13 @@ opt.signcolumn = "yes"
 -- Decrease update time for faster completion
 opt.updatetime = 250
 
--- Displays which-key popup immediately
-opt.timeoutlen = 0
-
 -- Configure how new splits should be opened
 opt.splitright = true
 opt.splitbelow = true
 
 -- Use special symbols to identify certain whitespace characters
 opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
 -- Always show these symbols rather than whitespace
 opt.list = true
 
