@@ -19,3 +19,18 @@ vim.keymap.set({'n', 'v', 'i'}, '<S-ScrollWheelDown>', '<ScrollWheelLeft>', { de
 -- Scroll one line at a time
 vim.keymap.set({'n', 'v', 'i'}, '<ScrollWheelUp>', '<C-y>', { desc = 'Scroll up one line' })
 vim.keymap.set({'n', 'v', 'i'}, '<ScrollWheelDown>', '<C-e>', { desc = 'Scroll down one line' })
+
+-- Git
+-- Prompts for commit message in vim's input()
+vim.keymap.set('n', '<leader>gc', function()
+    local msg = vim.fn.input('Commit message: ')
+    if msg ~= '' then
+        vim.cmd('!git commit -m ' .. vim.fn.shellescape(msg))
+    end
+end)
+
+vim.keymap.set('n', '<leader>gP', ':!git pull<CR>')
+vim.keymap.set('n', '<leader>gp', ':!git push origin<CR>')
+vim.keymap.set('n', '<leader>gr', ':!git rebase green<CR>')
+vim.keymap.set('n', '<leader>ga', ':!git add .<CR>')
+vim.keymap.set('n', '<leader>gf', ':split | terminal git fetch origin green:green<CR>')

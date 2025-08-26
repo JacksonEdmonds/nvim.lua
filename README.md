@@ -9,6 +9,11 @@
 | `<leader>q` | Show quickfix list for current file |
 | `<C-^>` | Swap to last file |
 
+| `<C-f>` | When in command mode (ie after hitting `:`), edit current command using vi-mode and view previous commands |
+| `q:` | Open command editor window (as `<C-f>` above, without hitting `:` first) |
+| `;` | Repeat the last `f`, `F`, `t`, or `T` command in the same direction |
+| `,` | Repeat the last `f`, `F`, `t`, or `T` command in the opposite direction |
+
 ## Oil
 
 File explorer that allows navigating and editing directories as text buffers
@@ -21,7 +26,7 @@ File explorer that allows navigating and editing directories as text buffers
 | `<C-p>` | Show/hide file preview in horizontal split |
 | `<C-c>` | Close oil and return to open file |
 | `<C-l>` | Refresh |
-| `-` | Go up a folder |
+| `-` | Open Oil/Go up a folder |
 | `_` | Open current working directory |
 | `` ` `` | Change current working directory (CWD) to be the current directory globally |
 | `~` |  Change current working directory (CWD) to be the current directory for just this tab |
@@ -39,15 +44,8 @@ File explorer that allows navigating and editing directories as text buffers
 
 # To Do
 
-## which-key
-
-https://github.com/folke/which-key.nvim
-
-A keybinding helper that shows a popup with available key bindings in Neovim after pressing a leader key, helping users discover keymaps without memorizing them all.
 
 ## Tutorials/General
-
-Pimp your terminal with Custom ZSH Themes & Prompts - https://www.youtube.com/watch?v=XSeO6nnlWHw
 
 How I setup nvim - https://www.youtube.com/watch?v=6pAG3BHurdM
 
@@ -191,13 +189,18 @@ A linting framework for Neovim that runs linters on various programming language
 
 ### dprint
 
-https://www.youtube.com/watch?v=ybUE4D80XSk
 
+https://grok.com/chat/dd744684-9f78-4239-aa56-bd46bfeaa1a4
+https://www.youtube.com/watch?v=ybUE4D80XSk
 https://github.com/dprint/dprint-plugin-prettier
 https://github.com/dprint/dprint-plugin-typescript
 Lint/format on save - conform.nvim
 
-prettier nvim configs to have max line length
+Linting
+
+- Force braces on arrow functions
+- Force parentheses around parameters in arrow functions
+- Max line length
 
 ## Git
 
@@ -260,12 +263,6 @@ vim.api.nvim_create_autocmd(
 { "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
 { desc = "autosave", pattern = "\*", command = "silent! update" }
 )
-
-## Git
-
-git diff "watch"
-
-Already using gitsigns
 
 ## ZSH
 
@@ -369,7 +366,10 @@ Allow pasting images in nvim - https://www.yloutube.com/watch?v=0O3kqGwNzTI
 
 ## Bazel
 
-## Lua reference
+##
 
-nvim focussed lua reference - https://neovim.io/doc/user/lua-guide.html
-lua reference - https://learnxinyminutes.com/docs/lua/
+Finish adding git leader keymaps in keymaps.lua - investigate a proper git plugin first
+
+Review which-key setup, remove any unnecessary descriptions
+
+Find alternative colorscheme

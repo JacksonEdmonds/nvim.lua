@@ -12,10 +12,11 @@ return {
       -- Show gitsigns on untracked files
       attach_to_untracked = true,
       max_file_length = 100000,
+ 
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
-        -- Create a function that only implement mappings in buffers where gitsigns is active (ie git tracked files) rather than globally
+        -- Create a function that only implements mappings in buffers where gitsigns is active (ie git tracked files) rather than globally
         local function map(mode, l, r, opts)
           opts = opts or {}
           opts.buffer = bufnr
@@ -54,14 +55,28 @@ return {
         map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = 'git [u]ndo stage hunk' })
         map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
         map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
-        map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git show [b]lame on current line' })
+        map('n', '<leader>hb', function()
+          vim.cmd('echo "Loading git blame..."')
+          -- Set up one-time autocmd to detect blame buffer
+          local group = vim.api.nvim_create_augroup('GitBlameLoading', { clear = true })
+          vim.api.nvim_create_autocmd('BufEnter', {
+            group = group,
+            pattern = 'gitsigns://*',
+            once = true,
+            callback = function()
+              vim.cmd('echo ""') -- Clear loading message
+              vim.api.nvim_del_augroup_by_id(group)
+            end,
+          })
+          gitsigns.blame()
+        end, { desc = 'git show [b]lame on all lines' })
         map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index (staged but not committed changes)' })
         map('n', '<leader>hD', function()
           gitsigns.diffthis '@'
         end, { desc = 'git [D]iff against last commit' })
         -- Toggles
-        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame on all lines' })
-        map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
+        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame on current line' })
+        map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
       end,
     },
   },

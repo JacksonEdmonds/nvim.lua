@@ -1,4 +1,4 @@
--- Useful plugin to show you pending keybinds.
+-- A keybinding helper that shows a popup with available key bindings after pressing a leader key
 
 return {
   {
@@ -6,16 +6,15 @@ return {
     event = 'VimEnter', -- Load immediately after entering Vim, before all UI elements are loaded
     config = function() -- This is the function that runs, AFTER loading
       require('which-key').setup()
-
-      -- Document existing key chains
       require('which-key').add {
         { '<leader>c', group = '[C]ode' },
         { '<leader>d', group = '[D]ocument' },
+        { '<leader>g', group = '[G]it' },
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
-        { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>w', group = '[W]orkspace' },
       }
     end,
   },
