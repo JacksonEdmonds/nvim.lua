@@ -22,8 +22,8 @@ vim.schedule(function()
   opt.clipboard = "unnamedplus"
 end)
 
--- Don't wrap lines
-opt.wrap = false
+-- Wrap lines
+opt.wrap = true
 
 -- Save undo history in a file on disk (allows for restoring undo history when re-opening a file)
 opt.undofile = true
