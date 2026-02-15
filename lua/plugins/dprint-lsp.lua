@@ -1,5 +1,7 @@
--- Dprint LSP for formatting + Stylua for Lua files
+-- Dprint LSP for formatting + Stylua for Lua files.
 -- No external plugins required; uses vim.lsp.start() directly.
+-- This file lives in lua/plugins/ so lazy.nvim loads it, but returns {}
+-- because no plugin needs to be installed.
 
 local dprint_fts = {
 	"javascript",
@@ -27,7 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
 		vim.lsp.start({
 			name = "dprint",
-			cmd = { "/opt/homebrew/bin/dprint", "lsp" },
+			cmd = { "dprint", "lsp" },
 			root_dir = vim.fs.root(args.buf, { "dprint.json", "dprint.jsonc", ".git" })
 				or vim.fn.getcwd(),
 		})
@@ -54,6 +56,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 ----------------------------------------------------------------------------
 local function format_with_stylua()
 	local buf = vim.api.nvim_get_current_buf()
+	local cursor = vim.api.nvim_win_get_cursor(0)
 	local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
 	local input = table.concat(lines, "\n") .. "\n"
 	local result = vim.fn.system({ "stylua", "-" }, input)
@@ -64,6 +67,10 @@ local function format_with_stylua()
 			table.remove(new_lines)
 		end
 		vim.api.nvim_buf_set_lines(buf, 0, -1, false, new_lines)
+		-- Restore cursor, clamping to new line count
+		local max_line = vim.api.nvim_buf_line_count(buf)
+		cursor[1] = math.min(cursor[1], max_line)
+		vim.api.nvim_win_set_cursor(0, cursor)
 	end
 end
 

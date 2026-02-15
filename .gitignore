@@ -1,7 +1,14 @@
-tags
-test.sh
-.luarc.json
-nvim
+# macOS
+.DS_Store
 
+# Neovim generated
+tags
 spell/
+.luarc.json
+
+# Plugin manager lock file
 lazy-lock.json
+
+# Local/testing
+test.sh
+nvim

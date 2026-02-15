@@ -64,9 +64,6 @@ opt.expandtab = true
 opt.spell = true
 opt.spelllang = "en"
 
--- Don't update the display while executing macros
-opt.lazyredraw = true
-
 -- Show proposed changes from substitutions in real time
 opt.inccommand = "split"
 
@@ -78,8 +75,13 @@ opt.inccommand = "split"
 -- - :500 : Save up to 500 items from the command-line history
 -- - <200 : Save the file marks (locations in files) for up to 200 file
 -- - h : Don't persist the hlsearch state between sessions
--- - s500 : Save up to 500 items in the search pattern history (eg from :%s
+-- - s500 : Skip items with contents larger than 500 KB
 opt.shada = "!,%,'200,/500,:500,<200,h,s500"
 
 -- Disable swapfile
 opt.swapfile = false
+
+-- Automatically write modified buffers before switching away.
+-- Covers :edit, :buffer, :bnext, and similar commands at the Vim core level,
+-- so it works even when plugins (e.g. Oil) use noautocmd internally.
+opt.autowriteall = true
