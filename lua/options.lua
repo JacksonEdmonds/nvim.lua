@@ -5,9 +5,9 @@ opt.number = true
 -- Show relative line numbers
 opt.relativenumber = true
 
--- todo possibly set to foldmethod=syntax if I can get syntax folding working properly
--- Set fold level based on indent
-opt.foldmethod = "indent"
+-- Fold based on treesitter syntax tree (functions, classes, blocks)
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- Default folds to open when opening a file
 opt.foldlevel = 99
