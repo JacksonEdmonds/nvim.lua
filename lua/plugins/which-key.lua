@@ -8,7 +8,9 @@ return {
       require('which-key').setup()
       require('which-key').add {
         { '<leader>g', group = '[G]it' },
+        { '<leader>gl', group = 'Git [L]og' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
       }
     end,
